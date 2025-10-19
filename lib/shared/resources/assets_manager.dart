@@ -1,0 +1,38 @@
+const String imagePath = "assets/images";
+const String jsonPath = "assets/json";
+const String iconsPath = "assets/icons";
+const String svgPath = "assets/svg_images";
+
+
+class ImagesManager{
+
+  static const String bnu = "$imagePath/bnu.jpg";
+  static const String profileImage = "$imagePath/profile_image.png";
+
+}
+
+
+class IconsManager{
+
+  static const String headphone = "$iconsPath/headphone.png";
+  static const String notification = "$iconsPath/notification.png";
+  static const String profile = "$iconsPath/user.png";
+  static const String message = "$iconsPath/message.png";
+  static const String courses = "$iconsPath/courses.png";
+  static const String grades = "$iconsPath/test.png";
+  static const String quiz = "$iconsPath/quiz.png";
+  static const String calendar = "$iconsPath/calendar.png";
+  static const String warning = "$iconsPath/warning.png";
+  static const String attendance = "$iconsPath/attendance.png";
+  static const String gate = "$iconsPath/log-in.png";
+
+
+
+}
+
+
+
+class SvgManager{
+
+
+}
