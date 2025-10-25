@@ -1,7 +1,11 @@
+import 'package:bnu_lms/shared/routes_manager/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../shared/config/theme/app_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../shared/config/theme/app_dark_text_styles.dart';
+import '../../../../shared/config/theme/app_light_text_styles.dart';
+import '../../../../shared/cubit/theme_cubit.dart';
 import '../../../../shared/resources/assets_manager.dart';
 import '../../../../shared/resources/colors_manager.dart';
 
@@ -10,6 +14,10 @@ class HomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeCubit = context.watch<ThemeCubit>();
+    final isLight = themeCubit.isLightTheme();
+    final localizations = AppLocalizations.of(context)!;
+
     return Row(
       children: [
         CircleAvatar(
@@ -32,16 +40,24 @@ class HomeHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Welcome back,', style: AppTextStyles.welcome),
-              Text('Mohamed', style: AppTextStyles.userName),
+              Text(localizations.welcomeBack, style: isLight ? AppLightTextStyles.welcome : AppDarkTextStyles.welcome ),
+              Text('Mohamed', style: isLight ? AppLightTextStyles.userName : AppDarkTextStyles.userName),
             ],
           ),
         ),
         Row(
           children: [
-            const ImageIcon(AssetImage(IconsManager.notification)),
+            GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.notifications);
+                },
+                child: const ImageIcon(AssetImage(IconsManager.notification))),
             SizedBox(width: 20.w),
-            const Icon(Icons.settings),
+            GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.settings);
+                },
+                child: const Icon(Icons.settings)),
           ],
         )
       ],

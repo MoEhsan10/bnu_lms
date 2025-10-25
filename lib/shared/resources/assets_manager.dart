@@ -14,6 +14,7 @@ class ImagesManager{
 
 class IconsManager{
 
+  // Home
   static const String headphone = "$iconsPath/headphone.png";
   static const String notification = "$iconsPath/notification.png";
   static const String profile = "$iconsPath/user.png";
@@ -23,10 +24,12 @@ class IconsManager{
   static const String quiz = "$iconsPath/quiz.png";
   static const String calendar = "$iconsPath/calendar.png";
   static const String warning = "$iconsPath/warning.png";
-  static const String attendance = "$iconsPath/attendance.png";
-  static const String gate = "$iconsPath/log-in.png";
+  static const String attendance = "$iconsPath/qr-code.png";
+  static const String gate = "$iconsPath/gate.png";
 
-
+  // Settings
+  static const String theme = "$iconsPath/theme.png";
+  static const String language = "$iconsPath/language.png";
 
 }
 

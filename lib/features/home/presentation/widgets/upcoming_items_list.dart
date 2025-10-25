@@ -1,7 +1,10 @@
+import 'package:bnu_lms/shared/cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../shared/cubit/language_cubit.dart';
 import 'content_box.dart';
 
 class UpcomingItemsList extends StatelessWidget {
@@ -10,6 +13,12 @@ class UpcomingItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get theme and language
+    var themeCubit = context.watch<ThemeCubit>();
+    final isLight = themeCubit.isLightTheme();
+
+    var languageCubit = context.watch<LanguageCubit>();
+    final currentLang = languageCubit.state;
     return ListView.separated(
       padding: EdgeInsets.zero,
       // Add this line
@@ -44,6 +53,8 @@ class UpcomingItemsList extends StatelessWidget {
             ],
           ),
           child: ContentBox(
+            isLight: isLight,
+            isArabic: currentLang == 'ar',
             icon: item['icon'],
             title: item['title'],
             subtitle: item['subtitle'],

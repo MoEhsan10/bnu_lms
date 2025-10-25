@@ -1,11 +1,16 @@
 import 'package:bnu_lms/features/home/presentation/widgets/home_header.dart';
 import 'package:bnu_lms/features/home/presentation/widgets/quck_access_list.dart';
 import 'package:bnu_lms/features/home/presentation/widgets/upcoming_items_list.dart';
-import 'package:bnu_lms/shared/config/theme/app_styles.dart';
+import 'package:bnu_lms/shared/config/theme/app_light_text_styles.dart';
+import 'package:bnu_lms/shared/cubit/theme_cubit.dart';
 import 'package:bnu_lms/shared/resources/app_sizes.dart';
 import 'package:bnu_lms/shared/resources/assets_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../shared/config/theme/app_dark_text_styles.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -39,53 +44,80 @@ class _HomeTabState extends State<HomeTab> {
     },
   ];
 
-  final List<Map<String, dynamic>> categoryItem = [
-    {
-      'icon': IconsManager.courses,
-      'title': 'Courses',
-    },
-    {
-      'icon': IconsManager.calendar,
-      'title': 'Calendar',
-    },
-    {
-      'icon': IconsManager.quiz,
-      'title': 'Quiz',
-    },
-    {
-      'icon': IconsManager.grades,
-      'title': 'Grades',
-    },
-    {
-      'icon': IconsManager.attendance,
-      'title': 'Attendance',
-    },
-    {
-      'icon': IconsManager.gate,
-      'title': 'Entrance',
-    },
-  ];
+  List<Map<String, dynamic>> getCategoryItems(AppLocalizations localizations) {
+    return [
+      {
+        'icon': IconsManager.courses,
+        'title': localizations.courses,
+      },
+      {
+        'icon': IconsManager.calendar,
+        'title': localizations.calendar,
+      },
+      {
+        'icon': IconsManager.quiz,
+        'title': localizations.quiz,
+      },
+      {
+        'icon': IconsManager.grades,
+        'title': localizations.grades,
+      },
+      {
+        'icon': IconsManager.attendance,
+        'title': localizations.attendance,
+      },
+      {
+        'icon': IconsManager.gate,
+        'title': localizations.entrance,
+      },
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: REdgeInsets.symmetric(
-          horizontal: AppSizes.horizontalPadding,
-          vertical: AppSizes.verticalSectionSpacing),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const HomeHeader(),
-            SizedBox(height: AppSizes.largeSpacing),
-            Text('Upcoming', style: AppTextStyles.sectionTitle),
-            SizedBox(height: AppSizes.smallSpacing),
-            UpcomingItemsList(upcomingItems: upcomingItems),
-            SizedBox(height: AppSizes.largeSpacing),
-            Text('Quick Access', style: AppTextStyles.sectionTitle),
-            SizedBox(height: AppSizes.smallSpacing),
-            QuickAccessList(categoryItem: categoryItem),
-          ],
+    // Get theme and language state inside build method
+    var themeCubit = context.watch<ThemeCubit>();
+    final isLight = themeCubit.isLightTheme();
+
+    // var languageCubit = context.watch<LanguageCubit>();
+    // final currentLang = languageCubit.state;
+
+    // Get localization
+    final localizations = AppLocalizations.of(context)!;
+
+    // Get category items with localized titles
+    final categoryItems = getCategoryItems(localizations);
+
+    return SafeArea(
+      child: Padding(
+        padding: REdgeInsets.symmetric(
+            horizontal: AppSizes.horizontalPadding,
+            vertical: AppSizes.verticalSectionSpacing),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HomeHeader(),
+              SizedBox(height: AppSizes.largeSpacing),
+              Text(
+                localizations.upcoming,
+                style: isLight
+                    ? AppLightTextStyles.sectionTitle
+                    : AppDarkTextStyles.sectionTitle,
+              ),
+              SizedBox(height: AppSizes.smallSpacing),
+              UpcomingItemsList(upcomingItems: upcomingItems),
+              SizedBox(height: AppSizes.largeSpacing),
+              Text(
+                localizations.quickAccess,
+                style: isLight
+                    ? AppLightTextStyles.sectionTitle
+                    : AppDarkTextStyles.sectionTitle,
+              ),
+              SizedBox(height: AppSizes.smallSpacing),
+              QuickAccessList(categoryItem: categoryItems),
+            ],
+          ),
         ),
       ),
     );

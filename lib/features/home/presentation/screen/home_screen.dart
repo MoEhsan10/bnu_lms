@@ -5,6 +5,7 @@ import 'package:bnu_lms/features/profile/presentation/screens/profile_tab.dart';
 import 'package:bnu_lms/shared/resources/assets_manager.dart';
 import 'package:bnu_lms/shared/resources/colors_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,6 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: tabs[selectedIndex],
       floatingActionButton: FloatingActionButton(onPressed: () {},
@@ -43,22 +46,22 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
 
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: const Icon(Icons.home),
+            label: localizations.home,
           ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage(IconsManager.courses)),
-            label: 'Courses',
+           BottomNavigationBarItem(
+            icon: const ImageIcon(AssetImage(IconsManager.courses)),
+            label: localizations.courses,
           ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage(IconsManager.message)),
-            label: 'Forums',
+           BottomNavigationBarItem(
+            icon: const ImageIcon(AssetImage(IconsManager.message)),
+            label: localizations.forums,
           ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage(IconsManager.profile)),
-            label: 'Profile',
+           BottomNavigationBarItem(
+            icon: const ImageIcon(AssetImage(IconsManager.profile)),
+            label: localizations.profile,
           ),
         ],
       ),

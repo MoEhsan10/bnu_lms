@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static ThemeData light = ThemeData(
     scaffoldBackgroundColor: ColorsManager.white,
+    appBarTheme: const AppBarTheme(
+      color: ColorsManager.white,
+    ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
       backgroundColor: ColorsManager.white,
@@ -14,5 +17,21 @@ class AppTheme {
     // iconTheme: const IconThemeData(
     //     color: ColorsManager.white
     // ),
+  );
+
+  static ThemeData dark = ThemeData(
+    scaffoldBackgroundColor: ColorsManager.darkBackground,
+    appBarTheme: const AppBarTheme(
+      color: ColorsManager.darkBackground,
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: ColorsManager.darkBackground,
+      selectedItemColor: ColorsManager.blue,
+       unselectedItemColor: ColorsManager.white,
+    ),
+    iconTheme: const IconThemeData(
+        color: ColorsManager.blue
+    ),
   );
 }

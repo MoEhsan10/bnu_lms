@@ -1,59 +1,85 @@
-import 'package:bnu_lms/shared/config/theme/app_styles.dart';
+import 'package:bnu_lms/shared/resources/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../shared/resources/colors_manager.dart';
 
 class CategoryBox extends StatelessWidget {
-  const CategoryBox({super.key, required this.imagePath, required this.title});
-
-  final dynamic imagePath; // Can be IconData or String
+  final String imagePath;
   final String title;
+  final bool isLight;
+  final bool isArabic;
+  final VoidCallback? onTap;
+
+  const CategoryBox({super.key,
+    required this.imagePath,
+    required this.title,
+    required this.isLight,
+    required this.isArabic,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 16.w),
-      decoration: BoxDecoration(
-        color: ColorsManager.white,
-        borderRadius: BorderRadius.circular(20.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.11),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-            spreadRadius: 0,
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: EdgeInsets.all(16.w),
-            decoration: BoxDecoration(
-              color: ColorsManager.lightBlue.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(16.r),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: isLight ? ColorsManager.white : ColorsManager.darkSurface,
+          borderRadius: BorderRadius.circular(18.r),
+          boxShadow: isLight
+              ? [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.08),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
             ),
-            child: imagePath is IconData
-                ? Icon(
-              imagePath,
-              color: ColorsManager.blue,
-              size: 32.sp,
-            )
-                : ImageIcon(
-              AssetImage(imagePath),
-              color: ColorsManager.blue,
-              size: 32.sp,
-            ),
-          ),
-          Text(
-            title,
-            style: AppTextStyles.quickAccessLabel,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+          ]
+              : null,
+          border: !isLight
+              ? Border.all(
+            color: ColorsManager.darkBackground.withOpacity(0.2),
+            width: 1,
           )
-        ],
+              : null,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: REdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: isLight
+                    ? ColorsManager.blue.withOpacity(0.1)
+                    : ColorsManager.blue.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(16.r),
+              ),
+              child: Image.asset(
+                imagePath,
+                width: 32.w,
+                height: 32.h,
+                color: isLight ? ColorsManager.blue : ColorsManager.lightBlue,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(
+                    Icons.category,
+                    size: 32.sp,
+                    color: isLight ? ColorsManager.blue : ColorsManager.lightBlue,
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 12.h),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w600,
+                color: isLight ? ColorsManager.black : ColorsManager.white,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
       ),
     );
   }
