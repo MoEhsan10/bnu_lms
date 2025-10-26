@@ -6,7 +6,7 @@ const String svgPath = "assets/svg_images";
 
 class ImagesManager{
 
-  static const String bnu = "$imagePath/bnu.jpg";
+  static const String bnuLogo = "$imagePath/bnu_logo_splash.png";
   static const String profileImage = "$imagePath/profile_image.png";
 
 }
@@ -30,6 +30,9 @@ class IconsManager{
   // Settings
   static const String theme = "$iconsPath/theme.png";
   static const String language = "$iconsPath/language.png";
+
+  // Auth
+  static const String bnuIcon = "$iconsPath/app_icon.png";
 
 }
 

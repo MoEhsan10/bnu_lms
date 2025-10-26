@@ -113,4 +113,49 @@ class AppDarkTextStyles {
     fontWeight: FontWeight.w400,
     color: ColorsManager.darkTextSecondary,
   );
+
+
+  // LOGIN SCREEN TEXT STYLES - DARK
+  static final loginTitle = GoogleFonts.poppins(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorsManager.darkTextPrimary,
+  );
+
+  static final loginSubtitle = GoogleFonts.poppins(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.darkTextSecondary,
+  );
+
+  static final loginInputHint = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.darkTextSecondary,
+  );
+
+  static final forgotPassword = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: ColorsManager.blue,
+  );
+
+  static final loginButtonText = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorsManager.white,
+  );
+
+  static final loginSsoButtonText = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorsManager.blue,
+  );
+
+  static final loginFooter = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.darkTextSecondary,
+  );
+
 }

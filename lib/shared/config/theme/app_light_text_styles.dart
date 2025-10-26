@@ -133,4 +133,49 @@ class AppLightTextStyles {
     fontWeight: FontWeight.w400,
     color: ColorsManager.grayMedium,
   );
+
+  //Auth
+// LOGIN SCREEN TEXT STYLES
+  static final TextStyle loginTitle = GoogleFonts.poppins(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorsManager.black,
+  );
+
+  static final TextStyle loginSubtitle = GoogleFonts.poppins(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.grayDark,
+  );
+
+  static final TextStyle loginInputHint = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.grayDark,
+  );
+
+  static final TextStyle forgotPassword = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: ColorsManager.blue,
+  );
+
+  static final TextStyle loginButtonText = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorsManager.white,
+  );
+
+  static final TextStyle loginSsoButtonText = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorsManager.blue,
+  );
+
+  static final TextStyle loginFooter = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.grayMedium,
+  );
+
 }

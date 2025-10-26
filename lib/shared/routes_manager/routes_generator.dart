@@ -1,3 +1,4 @@
+import 'package:bnu_lms/features/auth/presentation/screens/login_screen.dart';
 import 'package:bnu_lms/features/notification/presentation/screens/notifications_screen.dart';
 import 'package:bnu_lms/features/settings/presentation/screens/settings_screen.dart';
 import 'package:bnu_lms/shared/routes_manager/routes.dart';
@@ -22,6 +23,11 @@ class RoutesGenerator {
         case Routes.notifications:
         return MaterialPageRoute(
           builder: (context) => const NotificationsScreen(),
+        );
+
+        case Routes.login:
+        return MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
         );
 
     // case Routes.onBoarding:
