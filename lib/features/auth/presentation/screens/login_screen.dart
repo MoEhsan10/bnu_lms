@@ -3,10 +3,10 @@ import 'package:bnu_lms/shared/config/theme/app_light_text_styles.dart';
 import 'package:bnu_lms/shared/resources/colors_manager.dart';
 import 'package:bnu_lms/shared/routes_manager/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../../shared/cubit/theme_cubit.dart';
+import 'package:provider/provider.dart';
+import '../../../../shared/cubit/theme_provider.dart';
 import '../../../../shared/resources/assets_manager.dart';
 import '../../../../shared/widgets/custom_text_form_field.dart';
 import '../../../../shared/widgets/validators.dart';
@@ -31,8 +31,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var themeCubit = context.watch<ThemeCubit>();
-    final isLight = themeCubit.isLightTheme();
+    var themeProvider = Provider.of<ThemeProvider>(context);
+    final isLight = themeProvider.isLightTheme();
     final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
